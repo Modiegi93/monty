@@ -61,10 +61,53 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+/* builtin functions */
 void push(stack_t **stack, unsigned int line_number);
 void pall(stack_t **stack, unsigned int line_number);
 void pint(stack_t **stack, unsigned int line_number);
 void swap(stack_t **stack, unsigned int line_number);
 void nop(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void pchar(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void div_m(stack_t **stack, unsigned int line_number);
+void mod_m(stack_t **stack, unsigned int line_number);
+void pstr_t(stack_t **stack, unsigned int line_number);
+void rotrl(stack_t **stack, unsigned int line_number);
+
+/* error */
+void stderr_usage(void);
+void stderr_malloc(void);
+void stderr_fopen(char *fd);
+void stderr_int(unsigned int line_number);
+void stderr_unknown(char *token, unsigned int line_number);
+void div_e(unsigned int line_number);
+void op_e(unsigned int line_number, char *op);
+
+/* test file */
+void tokerr(int error_code);
+unsigned int array_len(void);
+char *get_int(int num);
+unsigned int abs_m(int);
+int len_buff_uint(unsigned int num, unsigned int base);
+void full_buff(unsigned int num, unsigned int base, char *buff, int buff_size);
+void pop_e(unsigned int line_number);
+void pint_e(unsigned int line_number);
+void pchar_e(unsigned int line_number, char *msg);
+int _isdigit();
+void free_dlistint(stack_t *stack);
+void free_globalvars(void);
+void rotr(stack_t **stack, unsigned int line_number);
+stack_t *add_dnodeint(stack_t **head, int n);
+
+/* main.c */
+int main(int argc, char **argv);
+
+/*node functions */
+stack_t *create_node_stackfirst(stack_t **stack, int n);
+stack_t *create_node_stackend(stack_t **stack, int n);
+void free_node_stack(stack_t **stack);
 
 #endif /* MONTY_H */

@@ -6,7 +6,7 @@
  */
 unsigned int array_len(void)
 {
-	unsigned int toekn_len = 0;
+	unsigned int token_len = 0;
 
 	while (globalvar.token2[token_len])
 		token_len++;

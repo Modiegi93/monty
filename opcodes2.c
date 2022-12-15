@@ -202,7 +202,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 	{
 		temp = temp->next;
 	}
-	if (temp->n < 0 || temp -> 127)
+	if (temp->n < 0 || temp->n > 127)
 	{
 		pchar_e(line_number, "value out of range");
 	}
