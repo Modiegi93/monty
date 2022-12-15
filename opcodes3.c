@@ -162,5 +162,4 @@ void rotr(stack_t **stack, unsigned int line_number)
 	*stack = temp2;
 	(*stack)->prev = NULL;
 }
-	
 

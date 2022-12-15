@@ -33,7 +33,7 @@ void stderr_fopen(char *filename)
 }
 
 /**
- * stderr - error of int
+ * stderr_int - error of int
  * @line_number: type pointer of line number
  * Return: EXIT_FAILURE
  */

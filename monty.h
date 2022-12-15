@@ -1,6 +1,7 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+#include <string.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -76,7 +77,11 @@ void div_m(stack_t **stack, unsigned int line_number);
 void mod_m(stack_t **stack, unsigned int line_number);
 void pstr_t(stack_t **stack, unsigned int line_number);
 void rotrl(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void add(stack_t **stack, unsigned int line_number);
 
+/* get_builtin */
+int get_builtin(char *token, stack_t **stack, unsigned int line_number);
 /* error */
 void stderr_usage(void);
 void stderr_malloc(void);

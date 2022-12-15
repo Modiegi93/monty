@@ -10,7 +10,7 @@ int create_node_stack(stack_t **stack)
 	stack_t *p;
 
 	p = malloc(sizeof(stack_t));
-	if(p == NULL)
+	if (p == NULL)
 		stderr_malloc();
 	p->n = STACK;
 	p->prev = NULL;

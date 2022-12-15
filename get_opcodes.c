@@ -17,20 +17,20 @@ int get_builtin(char *token, stack_t **stack, unsigned int line_number)
 		{ "add", add },
 		{ "nop", nop },
 		{ "sub", sub },
-		{ "pall", pall},
-		{ "pint", pint},
+		{ "pall", pall },
+		{ "pint", pint },
 		{ "swap", swap },
 		{ "mul", mul },
-		{ "div", div_m},
+		{ "div", div_m },
 		{ "pchar", pchar },
-		{ "mod", mod },
+		{ "mod", mod_m },
 		{ "\n", nop },
-		{ " ", nop},
+		{ " ", nop },
 		{ "/t", nop },
 		{ "pstr", pstr_t },
 		{ "rotl", rotrl },
-		{ "rotr", rotr},
-		{NULL, NULL},
+		{ "rotr", rotr },
+		{NULL, NULL}
 	};
 	int i, flag = 0;
 	char *argument = NULL;

@@ -92,7 +92,7 @@ void pint(stack_t **stack, unsigned int line_number)
 /**
  * swap - swaps the top two elements of the stack.
  * @stack: head of linked list
- * @line_number - line number of the instruction
+ * @line_number: line number of the instruction
  *
  * Return: Nothing
  */
@@ -107,7 +107,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	temp = (*stack)->next;
 	if ((*stack)->next == NULL)
 		op_e(line_number, "swap");
-	while(temp->next != NULL)
+	while (temp->next != NULL)
 	{
 		temp = temp->next;
 	}

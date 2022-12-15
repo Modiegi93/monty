@@ -3,7 +3,7 @@
 /**
  * create_node_stackfirst - create a node stack
  * @stack: A pointer to top and bottom stack
- * @: the value
+ * @n: the value
  * Return: the node
  */
 stack_t *create_node_stackfirst(stack_t **stack, int n)
@@ -49,8 +49,9 @@ stack_t *create_node_stackend(stack_t **stack, int n)
 }
 
 /**
- * add_dnodeint - adds a new node at the beginning of a dlistint_t list.
- * head: pointer to the first element of the list
+ * add_dnodeint - adds a new node at the beginning of
+ * a dlistint_t list.
+ * @head: pointer to the first element of the list
  * @n: integer
  * Return: the pointer to a new node at the beginning of
  * a dlistint_t list

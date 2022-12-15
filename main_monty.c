@@ -1,7 +1,5 @@
 #include "monty.h"
 
-globales_t globalvar = {NULL, NULL, NULL};
-
 /**
  * main - entry point for the CLI program
  * @argc: count of arguments passed to the program
@@ -24,8 +22,8 @@ int main(int argc, char **argv)
 	line_size = getline(&globalvar.line_buf, &line_buf_size,
 			globalvar.fd);
 	if (globalvar.line_buf[0] == '#')
-		line_size = getline(&globalvar.line_buf, &line_buf_size,
-				globalvar.fd);
+		line_size = getline(&globalvar.line_buf,
+			       &line_buf_size, globalvar.fd);
 	while (line_size >= 0)
 	{flag = 0;
 		flag2 = 0;
@@ -33,19 +31,20 @@ int main(int argc, char **argv)
 		token = strtok(globalvar.line_buf, DELIM);
 		globalvar.token2 = strtok(NULL, DELIM);
 		if (token == NULL)
+		{flag2 = 1;
+			nop(&stack, line_number); }
+		if (flag2 == 0)
 		{
 			if (token[0] == '#')
-			{
-				line_size = getline(&globalvar.line_buf,
-					&line_buf_size, globalvar.fd);
-				flag = 1;}}
+			{line_size = getline(&globalvar.
+			     line_buf, &line_buf_size, globalvar.fd);
+				flag = 1; }}
 		if (flag == 0)
-		{get_builting(token, &stack, line_number);
+		{get_builtin(token, &stack, line_number);
 			line_size = getline(&globalvar.line_buf,
-					&line_buf_size, globalvar.fd); }}
+				&line_buf_size, globalvar.fd); }}
 	free_dlistint(stack);
 	free(globalvar.line_buf);
 	globalvar.line_buf = NULL;
 	fclose(globalvar.fd);
-	return (EXIT_SUCCESS);
-}
+	return (EXIT_SUCCESS); }
