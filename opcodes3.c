@@ -58,7 +58,7 @@ void mod_m(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = NULL;
 	stack_t *temp2 = NULL;
-	int i, j = 0, flag = 0;
+	int i = 0, j = 0, flag = 0;
 
 	if (*stack == NULL || stack == NULL)
 	{
@@ -111,9 +111,12 @@ void pstr_t(stack_t **stack, unsigned int line_number)
 		exit(0);
 	}
 	temp = *stack;
-	if (temp->next == NULL && line_number == 2 && temp->n < 0)
+	if (temp->next == NULL && line_number == 2 && (temp->n < 0 ||
+				temp->n >= 127))
 	{
 		printf("\n");
+		free_dlistint(*stack);
+		free_globalvars();
 		exit(0);
 	}
 	while (temp->next != NULL)
@@ -130,9 +133,7 @@ void pstr_t(stack_t **stack, unsigned int line_number)
 		if (temp->n <= 0 || temp->n >= 127)
 		{
 			printf("\n");
-			free_dlistint(*stack);
-			free_globalvars();
-			exit(0);
+			return;
 		}
 	}
 	printf("%c\n", temp->n);
@@ -148,20 +149,20 @@ void pstr_t(stack_t **stack, unsigned int line_number)
 void rotrl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp2 = NULL;
+	stack_t *temp = NULL;
 	(void)line_number;
 
-	if (*stack == NULL)
+	if (*stack == NULL || ((*stack)->next == NULL))
 		return;
-	temp2 = *stack;
-	while (temp2->next != NULL)
-		temp2 = temp2->next;
-	temp2->next = *stack;
-	(*stack)->prev = temp2;
-	temp2 = (*stack)->next;
-	(*stack)->next = NULL;
-	*stack = temp2;
-	(*stack)->prev = NULL;
-}
+	temp = *stack;
+	while (temp->next != NULL)
+		temp = temp->next;
+	temp2 = temp->prev;
+	temp2->next = NULL;
+	temp->prev = NULL;
+	temp->next = *stack;
+	(*stack)->prev = temp;
+	*stack = temp;
 
 /**
  * rotr - rotates the stack to the bottom.
