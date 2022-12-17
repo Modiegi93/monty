@@ -163,6 +163,7 @@ void rotrl(stack_t **stack, unsigned int line_number)
 	temp->next = *stack;
 	(*stack)->prev = temp;
 	*stack = temp;
+}
 
 /**
  * rotr - rotates the stack to the bottom.
